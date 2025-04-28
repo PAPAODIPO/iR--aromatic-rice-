@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IR Aromatic Organic Rice</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #1B4332;
+      --secondary-color: #0A2A20;
+      --background-color: #fff;
+      --text-color: #333;
+      --accent-color: #FFCA2C;
+    }
+    .dark-theme {
+      --background-color: #333;
+      --text-color: #f0f0f0;
+      --accent-color: #FFC107;
+    }
+    body {
+      font-family: 'Playfair Display', serif;
+      margin: 0;
+      padding: 0;
+      background: var(--background-color);
+      color: var(--text-color);
+      transition: 0.3s;
+    }
+    header, footer {
+      background: var(--primary-color);
+      color: #fff;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    section {
+      margin-bottom: 3rem;
+    }
+    h2 {
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .product {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    .product-info {
+      flex: 1;
+    }
+    .product-info button {
+      display: inline-block;
+      background: var(--primary-color);
+      color: #fff;
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 4px;
+      margin-top: 1rem;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .testimonial, .faq, .inquiry {
+      background: var(--accent-color);
+      padding: 2rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+    }
+    .testimonial cite {
+      font-style: normal;
+      font-weight: bold;
+    }
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--accent-color);
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 100;
+    }
+    /* Popup Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.7);
+    }
+    .modal-content {
+      background-color: var(--background-color);
+      margin: 10% auto;
+      padding: 2rem;
+      border: 1px solid #888;
+      width: 90%;
+      max-width: 500px;
+      border-radius: 10px;
+      position: relative;
+      animation: zoomIn 0.3s;
+    }
+    @keyframes zoomIn {
+      from {transform: scale(0.7);}
+      to {transform: scale(1);}
+    }
+    .close {
+      color: var(--text-color);
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 30px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .order-form input, .order-form textarea, .order-form button {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    .order-form button {
+      background: var(--primary-color);
+      color: #fff;
+      cursor: pointer;
+    }
+    .order-form button:hover {
+      background: var(--secondary-color);
+    }
+    .thank-you {
+      display: none;
+      text-align: center;
+      color: green;
+      font-size: 1.5rem;
+    }
+    @media(max-width: 768px){
+      .product { flex-direction: column; }
+      .product img { margin-right: 0; margin-bottom: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="theme-toggle" onclick="toggleTheme()">Toggle Theme</div>
+
+  <header>
+    <h1>IR Aromatic Organic Rice</h1>
+    <p>Grown with care in Kisumu, Kenya</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Our Rice Grades</h2>
+      <div class="product">
+        <div class="product-info">
+          <h3>Grade 1</h3>
+          <p>Premium aromatic rice available in 1kg, 2kg, 5kg, 10kg, and 25kg packages. Carefully selected for top-quality meals.</p>
+          <label for="quantity1">Quantity:</label>
+          <select id="quantity1" name="quantity1">
+            <option value="1kg">1kg</option>
+            <option value="2kg">2kg</option>
+            <option value="5kg">5kg</option>
+            <option value="10kg">10kg</option>
+            <option value="25kg">25kg</option>
+          </select>
+          <br>
+          <label for="grade1">Grade:</label>
+          <select id="grade1" name="grade1">
+            <option value="Grade 1">Grade 1</option>
+          </select>
+          <br>
+          <button onclick="openModal()">Order Now</button>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="product-info">
+          <h3>Grade 2</h3>
+          <p>Affordable, delicious rice - perfect for daily meals. Grown organically with no chemicals, ensuring taste and health.</p>
+          <label for="quantity2">Quantity:</label>
+          <select id="quantity2" name="quantity2">
+            <option value="1kg">1kg</option>
+            <option value="2kg">2kg</option>
+            <option value="5kg">5kg</option>
+            <option value="10kg">10kg</option>
+            <option value="25kg">25kg</option>
+          </select>
+          <br>
+          <label for="grade2">Grade:</label>
+          <select id="grade2" name="grade2">
+            <option value="Grade 2">Grade 2</option>
+          </select>
+          <br>
+          <button onclick="openModal()">Order Now</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonial">
+      <h2>What Our Clients Say</h2>
+      <p>"Ever since I started buying IR Aromatic Rice, my meals have completely transformed! The rich, natural aroma brings memories of my grandmother’s cooking. It’s simply the best in Kenya!"<br><cite>- Stanley Owaga</cite></p>
+      <p>"I'm extremely health-conscious, and IR Aromatic Rice has given me the perfect balance of health and flavor. Every grain feels full of life and tradition."<br><cite>- Caroline Mboga</cite></p>
+      <p>"You can immediately tell the difference from other brands — the flavor is fuller, the texture is perfect. It’s now a staple in my family’s kitchen."<br><cite>- Gilbert Okuta</cite></p>
+      <p>"The way this rice fills the kitchen with its aroma is magical. Every meal feels like a feast, and it's amazing to know it's grown organically here in Kenya."<br><cite>- Pendo Tabby</cite></p>
+      <p>"IR Aromatic Rice is a hidden gem. Proudly Kenyan, lovingly grown. You can taste the passion in every bite."<br><cite>- Seth Odipo</cite></p>
+    </section>
+
+    <section class="inquiry">
+      <h2>Have Any Questions?</h2>
+      <p>Call or WhatsApp: <strong>0711587775</strong> / <strong>0721410139</strong></p>
+    </section>
+
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <p><strong>Do you offer discounts or subscriptions?</strong><br>Yes, we offer bulk discounts and special subscription packages for loyal clients. Contact us for more info!</p>
+      <p><strong>How do I place an order?</strong><br>Simply click on "Order Now", fill out your details, and we’ll handle the rest!</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 IR Aromatic Organic Rice. All rights reserved.</p>
+  </footer>
+
+  <!-- Popup Modal -->
+  <div id="orderModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Place Your Order</h2>
+      <form id="orderForm" class="order-form" action="https://formspree.io/f/xvgagyry" method="POST" onsubmit="showThankYou(event)">
+        <input type="text" name="name" placeholder="Your Full Name" required>
+        <input type="tel" name="phone" placeholder="Your Phone Number" required>
+        <textarea name="address" placeholder="Your Delivery Address" required></textarea>
+        <button type="submit">Submit Order</button>
+      </form>
+      <div id="thankYouMessage" class="thank-you">
+        <p>Thank you for your order! We will contact you shortly.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('dark-theme');
+    }
+
+    function openModal() {
+      document.getElementById('orderModal').style.display = 'block';
+    }
+
+    function closeModal() {
+      document.getElementById('orderModal').style.display = 'none';
+      document.getElementById('orderForm').style.display = 'block';
+      document.getElementById('thankYouMessage').style.display = 'none';
+    }
+
+    function showThankYou(event) {
+      event.preventDefault();
+      const form = event.target;
+      const data = new FormData(form);
+
+      fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          form.style.display = 'none';
+          document.getElementById('thankYouMessage').style.display = 'block';
+          setTimeout(() => {
+            closeModal();
+          }, 3000);
+        } else {
+          alert('There was an error submitting your order. Please try again.');
+        }
+      }).catch(error => {
+        alert('Error. Please try again.');
+      });
+    }
+  </script>
+
+</body>
+</html>
